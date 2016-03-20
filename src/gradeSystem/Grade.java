@@ -57,7 +57,7 @@ public class Grade {
 		return totalGrade;
 	}
 	
-	public void calcuateTotalGrade(double[] weights) {
-		totalGrade = weights[0] * lab1 + weights[1] * lab2 + weights[2] * lab3 + weights[3] * midTerm + weights[4] * finalExam;
+	public void calcuateTotalGrade(int[] weights) {
+		totalGrade = (weights[0] * lab1 + weights[1] * lab2 + weights[2] * lab3 + weights[3] * midTerm + weights[4] * finalExam) / 100.0;
 	}
 }

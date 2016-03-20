@@ -2,15 +2,9 @@ package gradeSystem;
 
 public class Main {
 	public static void main(String[] args) {
-		GradeSystem test_system = new GradeSystem();
-		
-		Grade grade = test_system.getGrade("955002056");
-		System.out.println(grade.getTotalGrade());
-		
-		AverageGrade ag = test_system.getAverageGrade();
-		System.out.println(ag.getAvgTotalGrade());
-		
-		int rank = test_system.getRank("955002056");
-		System.out.println(rank);
+		UI userInterface = new UI();
+		System.out.println("您好，歡迎使用成績查詢系統。");
+		userInterface.mainLoop();
+		System.out.println("感謝使用成績查詢系統，再見！");
 	}
 }

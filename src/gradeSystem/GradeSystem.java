@@ -10,12 +10,16 @@ import java.text.ParseException;
 
 public class GradeSystem {
 	private ArrayList<Grade> gradeArray = new ArrayList<Grade>();
-	private double[] weights = new double[]{0.1, 0.1, 0.1, 0.3, 0.4};
+	private int[] weights = new int[]{10, 10, 10, 30, 40};
 
 	GradeSystem() {
 		readGrades("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput.txt");
 		calculateTotalGrades();
 		sortGrades();
+	}
+	
+	public int getNumStudents() {
+		return gradeArray.size();
 	}
 	
 	private String[] parseLine(String line) throws ParseException {
@@ -74,17 +78,27 @@ public class GradeSystem {
 		}
 	}
 	
-	public double[] getWeights() {
+	public int[] getWeights() {
 		return weights;
 	}
 	
-	public void setWeights(double[] newWeights) {
+	private void setWeights(int[] newWeights) {
 		weights = newWeights;
 		calculateTotalGrades();
 		sortGrades();
 	}
 	
-	public boolean containsID(String[] ID) {
+	public boolean checkAndSetWeights(int[] weights) {
+		boolean unitarity = (weights[0] + weights[1] + weights[2] + weights[3] + weights[4] == 100);  
+		boolean nonnegative = (weights[0] >= 0 && weights[1] >= 0 && weights[2] >= 0 && weights[3] >= 0 && weights[4] >= 0);
+		if (!unitarity || !nonnegative) return false;
+		else {
+			setWeights(weights);
+			return true;
+		}
+	}
+	
+	public boolean containsID(String ID) {
 		boolean flag = false;
 		for (Grade g : gradeArray) {
 			if (ID.equals(g.getID())) {
@@ -93,6 +107,17 @@ public class GradeSystem {
 			}
 		}
 		return flag;
+	}
+	
+	public String getNameByID(String ID) {
+		String name = "";
+		for (Grade g : gradeArray) {
+			if (ID.equals(g.getID())) {
+				name = g.getName();
+				break;
+			}
+		}
+		return name;
 	}
 	
 	public Grade getGrade(String ID) {
