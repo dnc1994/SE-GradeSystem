@@ -6,6 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/* class: IntegrationTest
+ * 包含兩個整合測試
+ */
 public class IntegrationTest {
 
 	@Before

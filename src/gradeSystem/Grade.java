@@ -178,7 +178,7 @@ public class Grade {
 	 * pseudocode:
 	 *     totalGrade <- [lab1, lab2, lab3, midTerm, finalExam] * weights[:] / [100.0]
 	 */
-	public void calcuateTotalGrade(int[] weights) {
+	public void calculateTotalGrade(int[] weights) {
 		totalGrade = (weights[0] * lab1 + weights[1] * lab2 + weights[2] * lab3 + weights[3] * midTerm + weights[4] * finalExam) / 100.0;
 	}
 }

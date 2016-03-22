@@ -150,7 +150,7 @@ public class GradeSystem {
 	 */
 	private void calculateTotalGrades() {
 		for (Grade g : gradeArray) {
-			g.calcuateTotalGrade(weights);
+			g.calculateTotalGrade(weights);
 		}
 	}
 	
@@ -193,7 +193,6 @@ public class GradeSystem {
 	 *         return true
 	 *     else
 	 *         return false
-     * 
 	 */
 	public boolean checkAndSetWeights(int[] weights) {
 		boolean unitarity = (weights[0] + weights[1] + weights[2] + weights[3] + weights[4] == 100);  
