@@ -9,12 +9,12 @@ import org.junit.Test;
 /* class: TestUserInterface
  * 實現了對 UserInterface 類的測試
  */
-public class TestUI {
-	UI ui = null; 
+public class TestUserInterface {
+	UserInterface ui = null; 
 	
 	@Before
 	public void setUp() throws Exception {
-		ui = new UI("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput.txt");
+		ui = new UserInterface("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput.txt");
 	}
 
 	@After

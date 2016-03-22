@@ -101,12 +101,8 @@ public class TestGradeSystem {
 	 */	
 	@Test
 	public void testContainsID() {
-		String testID1 = "955002056";
-		boolean testFlag1 = gs.containsID(testID1);
-		assertEquals(true, testFlag1);
-		String testID2 = "999999999";
-		boolean testFlag2 = gs.containsID(testID2);
-		assertEquals(false, testFlag2);
+		assertEquals(true, gs.containsID("955002056"));
+		assertEquals(false, gs.containsID("999999999"));
 	}
 
 	/* testcase: testGetNameByID
@@ -115,12 +111,8 @@ public class TestGradeSystem {
 	 */
 	@Test
 	public void testGetNameByID() {
-		String testID1 = "955002056";
-		String testName1 = gs.getNameByID(testID1);
-		assertEquals("許文馨", testName1);
-		String testID2 = "999999999";
-		String testName2 = gs.getNameByID(testID2);
-		assertEquals("", testName2);
+		assertEquals("許文馨", gs.getNameByID("955002056"));
+		assertEquals("", gs.getNameByID("999999999"));
 	}
 
 	/* testcase: testGetGrade

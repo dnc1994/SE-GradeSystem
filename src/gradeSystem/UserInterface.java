@@ -6,10 +6,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.InputMismatchException;
 
 /**
- * class: UI
+ * class: UserInterface
  * 實現與用戶的交互
  */
-public class UI {
+public class UserInterface {
 	/**
 	 * @uml.property  name="gradeSystem"
 	 * @uml.associationEnd  multiplicity="(1 1)"
@@ -36,7 +36,7 @@ public class UI {
 	 *     currentID <- ""
 	 *     reader <- new Scanner()
 	 */
-	UI(String gradeFile) throws FileNotFoundException, UnsupportedEncodingException {
+	UserInterface(String gradeFile) throws FileNotFoundException, UnsupportedEncodingException {
 		gradeSystem = new GradeSystem(gradeFile);
 		currentID = "";
 		reader = new Scanner(System.in);
