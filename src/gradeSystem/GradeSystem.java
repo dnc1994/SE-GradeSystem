@@ -9,11 +9,18 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 
 public class GradeSystem {
+	/**
+	 * @uml.property  name="gradeArray"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="gradeSystem.Grade"
+	 */
 	private ArrayList<Grade> gradeArray = new ArrayList<Grade>();
+	/**
+	 * @uml.property  name="weights"
+	 */
 	private int[] weights = new int[]{10, 10, 10, 30, 40};
 
-	GradeSystem() {
-		readGrades("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput.txt");
+	GradeSystem(String gradeFile) throws FileNotFoundException, UnsupportedEncodingException {
+		readGrades(gradeFile);
 		calculateTotalGrades();
 		sortGrades();
 	}
@@ -22,7 +29,7 @@ public class GradeSystem {
 		return gradeArray.size();
 	}
 	
-	private String[] parseLine(String line) throws ParseException {
+	public String[] parseLine(String line) throws ParseException {
 		line = line.replaceAll("  ", "");
 		String[] info = line.split(" ");
 		if (info.length != 7) {
@@ -53,18 +60,18 @@ public class GradeSystem {
 		s.close();
 	}
 	
-	private void readGrades(String fileName) {
+	public void readGrades(String fileName) throws FileNotFoundException, UnsupportedEncodingException {
 		try {
 			Scanner s = new Scanner(new InputStreamReader(new FileInputStream(new File(fileName)), "UTF8"));
 			parseFile(s);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw new FileNotFoundException();
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			throw new UnsupportedEncodingException();
 		}
 	}
 	
-	private void sortGrades() {
+	public void sortGrades() {
 		Collections.sort(gradeArray, new Comparator<Grade>() {
 			@Override public int compare(Grade g1, Grade g2) {
 				return Double.compare(g2.getTotalGrade(), g1.getTotalGrade());
@@ -78,10 +85,18 @@ public class GradeSystem {
 		}
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="weights"
+	 */
 	public int[] getWeights() {
 		return weights;
 	}
 	
+	/**
+	 * @param newWeights
+	 * @uml.property  name="weights"
+	 */
 	private void setWeights(int[] newWeights) {
 		weights = newWeights;
 		calculateTotalGrades();
@@ -132,7 +147,7 @@ public class GradeSystem {
 	}
 	
 	public int getRank(String ID) {
-		int rank = 0;
+		int rank = -1;
 		for (int i = 0; i < gradeArray.size(); ++ i) {
 			if (ID.equals(gradeArray.get(i).getID())) {
 				rank = i + 1;
@@ -142,13 +157,13 @@ public class GradeSystem {
 		return rank;
 	}
 	
-	public AverageGrade getAverageGrade() {
-		AverageGrade ag = new AverageGrade();
+	public GradeAccumulator getAverageGrade() {
+		GradeAccumulator ga = new GradeAccumulator();
 		for (Grade g : gradeArray) {
-			ag.addGrade(g);
+			ga.addGrade(g);
 		}
-		ag.averageGrade(gradeArray.size());
-		return ag;
+		ga.averageGrade(gradeArray.size());
+		return ga;
 	}
 	
 }

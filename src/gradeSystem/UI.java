@@ -1,27 +1,42 @@
 package gradeSystem;
 
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.InputMismatchException;
 
 public class UI {
+	/**
+	 * @uml.property  name="gradeSystem"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	GradeSystem gradeSystem;
+	/**
+	 * @uml.property  name="currentID"
+	 */
 	String currentID;
+	/**
+	 * @uml.property  name="currentName"
+	 */
 	String currentName;
+	/**
+	 * @uml.property  name="reader"
+	 */
 	Scanner reader;
 	
-	UI() {
-		gradeSystem = new GradeSystem();
+	UI(String gradeFile) throws FileNotFoundException, UnsupportedEncodingException {
+		gradeSystem = new GradeSystem(gradeFile);
 		currentID = "";
 		reader = new Scanner(System.in);
 	}
 	
-	private String parseIntScore(int score) {
+	String parseIntScore(int score) {
 		String s = String.format("%d", score);
 		if (score < 60) s+= "*"; 
 		return s;
 	}
 	
-	private String parseDoubleScore(double score) {
+	String parseDoubleScore(double score) {
 		String s = String.format("%.1f", score);
 		if (score < 60) s+= "*"; 
 		return s;
@@ -46,13 +61,13 @@ public class UI {
 	
 	private void showAverageGrade() {
 		System.out.println("各項平均分（全班共" + gradeSystem.getNumStudents() + "人）：");
-		AverageGrade ag = gradeSystem.getAverageGrade();
-		System.out.println("lab1:\t\t" + parseDoubleScore(ag.getAvgLab1()));
-		System.out.println("lab2:\t\t" + parseDoubleScore(ag.getAvgLab2()));
-		System.out.println("lab3:\t\t" + parseDoubleScore(ag.getAvgLab3()));
-		System.out.println("midTerm:\t" + parseDoubleScore(ag.getAvgMidTerm()));
-		System.out.println("finalExam:\t" + parseDoubleScore(ag.getAvgFinalExam()));
-		System.out.println("totalGrade:\t" + parseDoubleScore(ag.getAvgTotalGrade()));
+		GradeAccumulator ga = gradeSystem.getAverageGrade();
+		System.out.println("lab1:\t\t" + parseDoubleScore(ga.getAvgLab1()));
+		System.out.println("lab2:\t\t" + parseDoubleScore(ga.getAvgLab2()));
+		System.out.println("lab3:\t\t" + parseDoubleScore(ga.getAvgLab3()));
+		System.out.println("midTerm:\t" + parseDoubleScore(ga.getAvgMidTerm()));
+		System.out.println("finalExam:\t" + parseDoubleScore(ga.getAvgFinalExam()));
+		System.out.println("totalGrade:\t" + parseDoubleScore(ga.getAvgTotalGrade()));
 	}
 	
 	private void printOldWeights() {
@@ -144,7 +159,7 @@ public class UI {
 		currentName = gradeSystem.getNameByID(ID);
 	}
 	
-	private boolean checkID(String ID) {
+	public boolean checkAndSetID(String ID) {
 		if (gradeSystem.containsID(ID)) {
 			setUser(ID);
 			printLoginSuccessful();
@@ -160,7 +175,7 @@ public class UI {
 			printLoginInfo();
 			String command = reader.next().replace("\n", "").replace("\r", "");
 			if (command.equals("Q")) return true;
-			else if (checkID(command)) return false;
+			else if (checkAndSetID(command)) return false;
 		}
 	}
 	
