@@ -11,7 +11,7 @@ public class TestGrade {
 	
 	@Before
 	public void setUp() throws Exception {
-		g = new Grade("955002056", "ÔSÎÄÜ°", 88, 92, 88, 98, 91);
+		g = new Grade("955002056", "è¨±æ–‡é¦¨", 88, 92, 88, 98, 91);
 	}
 
 	@After
@@ -21,7 +21,7 @@ public class TestGrade {
 
 	@Test
 	public void testEquals() {
-		assertEquals(true, g.equals(new Grade("955002056", "ÔSÎÄÜ°", 88, 92, 88, 98, 91)));
+		assertEquals(true, g.equals(new Grade("955002056", "è¨±æ–‡é¦¨", 88, 92, 88, 98, 91)));
 		assertEquals(false, g.equals(new Grade()));
 	}
 	

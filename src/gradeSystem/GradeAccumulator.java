@@ -1,5 +1,9 @@
 package gradeSystem;
 
+/**
+ * class: GradeAccumulator
+ * 用於累加成績記錄
+ */
 public class GradeAccumulator {
 	/**
 	 * @uml.property  name="avgLab1"
@@ -26,6 +30,9 @@ public class GradeAccumulator {
 	 */
 	private double avgTotalGrade;
 	
+	/** 
+	 * Empty Constructor
+	 */
 	GradeAccumulator() {
 		avgLab1 = 0.0;
 		avgLab2 = 0.0;
@@ -35,6 +42,11 @@ public class GradeAccumulator {
 		avgTotalGrade = 0.0;
 	}
 	
+	/**
+	 * method: addGrade
+	 * 將單條成績記錄添加到累加器上
+	 * @param Grade 要添加的成績記錄
+	 */
 	public void addGrade(Grade g) {
 		avgLab1 += g.getLab1();
 		avgLab2 += g.getLab2();
@@ -44,20 +56,30 @@ public class GradeAccumulator {
 		avgTotalGrade += g.getTotalGrade();
 	}
 	
-	public void averageGrade(int num_students) {
-		if (num_students == 0) {
-		    throw new IllegalArgumentException("Argument 'num_students' cannot be 0.");
+	/**
+	 * method: averageGrade
+	 * 將累加器的各項成績除以學生總數得到平均分
+	 * @param int 學生總數
+	 * @throws IllegalArgumentException
+	 * pseudocode:
+	 *     GradeAccumulator[:] /= [numStudents]
+	 */
+	public void averageGrade(int numStudents) {
+		if (numStudents == 0) {
+		    throw new IllegalArgumentException("Argument 'numStudents' cannot be 0.");
 		}
-		avgLab1 /= num_students;
-		avgLab2 /= num_students;
-		avgLab3 /= num_students;
-		avgMidTerm /= num_students;
-		avgFinalExam /= num_students;
-		avgTotalGrade /= num_students;
+		avgLab1 /= numStudents;
+		avgLab2 /= numStudents;
+		avgLab3 /= numStudents;
+		avgMidTerm /= numStudents;
+		avgFinalExam /= numStudents;
+		avgTotalGrade /= numStudents;
 	}
 
 	/**
-	 * @return
+	 * method: getAvgLab1
+	 * 獲取 Lab1 平均得分
+	 * @return double 表示 Lab1 平均得分
 	 * @uml.property  name="avgLab1"
 	 */
 	public double getAvgLab1() {
@@ -65,7 +87,9 @@ public class GradeAccumulator {
 	}
 	
 	/**
-	 * @return
+	 * method: getAvgLab2
+	 * 獲取 Lab2 平均得分
+	 * @return double 表示 Lab2 平均得分
 	 * @uml.property  name="avgLab2"
 	 */
 	public double getAvgLab2() {
@@ -73,7 +97,9 @@ public class GradeAccumulator {
 	}
 	
 	/**
-	 * @return
+	 * method: getAvgLab3
+	 * 獲取 Lab3 平均得分
+	 * @return double 表示 Lab3 平均得分
 	 * @uml.property  name="avgLab3"
 	 */
 	public double getAvgLab3() {
@@ -81,7 +107,9 @@ public class GradeAccumulator {
 	}
 		
 	/**
-	 * @return
+	 * method: getAvgMidTerm
+	 * 獲取期中成績平均得分
+	 * @return double 表示期中成績平均得分
 	 * @uml.property  name="avgMidTerm"
 	 */
 	public double getAvgMidTerm() {
@@ -89,7 +117,9 @@ public class GradeAccumulator {
 	}
 	
 	/**
-	 * @return
+	 * method: getAvgFinalExam
+	 * 獲取期末成績平均得分
+	 * @return double 表示期末成績平均得分
 	 * @uml.property  name="avgFinalExam"
 	 */
 	public double getAvgFinalExam() {
@@ -97,7 +127,9 @@ public class GradeAccumulator {
 	}
 	
 	/**
-	 * @return
+	 * method: getAvgTotalGrade
+	 * 獲取總成績平均得分
+	 * @return double 表示總成績平均得分
 	 * @uml.property  name="avgTotalGrade"
 	 */
 	public double getAvgTotalGrade() {

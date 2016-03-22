@@ -39,13 +39,13 @@ public class TestGradeSystem {
 	
 	@Test(expected=ParseException.class)
 	public void testParseLineParseException() throws ParseException {
-		String[] info = gs.parseLine("955002056 ÔSÎÄÜ° 88 92 88 98");
+		String[] info = gs.parseLine("955002056 è¨±æ–‡é¦¨ 88 92 88 98");
 	}
 	
 	@Test
 	public void testParseLineParse() throws ParseException {
-		String[] info = gs.parseLine("955002056 ÔSÎÄÜ° 88 92 88 98 91");
-		assertEquals("ÔSÎÄÜ°", info[1]);
+		String[] info = gs.parseLine("955002056 è¨±æ–‡é¦¨ 88 92 88 98 91");
+		assertEquals("è¨±æ–‡é¦¨", info[1]);
 	}
 	
 	@Test
@@ -77,7 +77,7 @@ public class TestGradeSystem {
 	public void testGetNameByID() {
 		String testID1 = "955002056";
 		String testName1 = gs.getNameByID(testID1);
-		assertEquals("ÔSÎÄÜ°", testName1);
+		assertEquals("è¨±æ–‡é¦¨", testName1);
 		String testID2 = "999999999";
 		String testName2 = gs.getNameByID(testID2);
 		assertEquals("", testName2);
@@ -87,7 +87,7 @@ public class TestGradeSystem {
 	public void testGetGrade() {
 		String testID1 = "955002056";
 		Grade testGrade1 = gs.getGrade(testID1);
-		assertEquals(true, testGrade1.equals(new Grade("955002056", "ÔSÎÄÜ°", 88, 92, 88, 98, 91)));
+		assertEquals(true, testGrade1.equals(new Grade("955002056", "è¨±æ–‡é¦¨", 88, 92, 88, 98, 91)));
 		String testID2 = "999999999";
 		Grade testGrade2 = gs.getGrade(testID2);
 		assertEquals(true, testGrade2.equals(new Grade()));

@@ -13,7 +13,7 @@ public class TestGradeAccumulator {
 	@Before
 	public void setUp() throws Exception {
 		ga = new GradeAccumulator();
-		g = new Grade("955002056", "ÔSÎÄÜ°", 88, 92, 88, 98, 91);
+		g = new Grade("955002056", "è¨±æ–‡é¦¨", 88, 92, 88, 98, 91);
 	}
 
 	@After

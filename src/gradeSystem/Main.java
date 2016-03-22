@@ -5,9 +5,9 @@ import java.io.UnsupportedEncodingException;
 
 public class Main {
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		UI userInterface = new UI("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput_ANSI.txt");
-		System.out.println("ÄúºÃ£¬šgÓ­Ê¹ÓÃ³É¿ƒ²éÔƒÏµ½y¡£");
+		UI userInterface = new UI("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput.txt");
+		System.out.println("æ‚¨å¥½ï¼Œæ­¡è¿ä½¿ç”¨æˆç¸¾æŸ¥è©¢ç³»çµ±ã€‚");
 		userInterface.mainLoop();
-		System.out.println("¸ĞÖxÊ¹ÓÃ³É¿ƒ²éÔƒÏµ½y£¬ÔÙÒŠ£¡");
+		System.out.println("æ„Ÿè¬ä½¿ç”¨æˆç¸¾æŸ¥è©¢ç³»çµ±ï¼Œå†è¦‹ï¼");
 	}
 }
