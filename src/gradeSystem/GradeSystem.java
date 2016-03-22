@@ -133,7 +133,7 @@ public class GradeSystem {
 	 * method: sortGrades
 	 * 對 gradeArray 按照 totalGrade 字段進行排序，重載了 compare method 以實現降序排序
 	 */
-	public void sortGrades() {
+	private void sortGrades() {
 		Collections.sort(gradeArray, new Comparator<Grade>() {
 			@Override public int compare(Grade g1, Grade g2) {
 				return Double.compare(g2.getTotalGrade(), g1.getTotalGrade());

@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
+import java.util.Arrays;
 
 public class TestGradeSystem {
 	/**
@@ -29,7 +30,7 @@ public class TestGradeSystem {
 	
 	@Test(expected=FileNotFoundException.class)
 	public void testReadGradesFileNotFoundException() throws FileNotFoundException, UnsupportedEncodingException {
-		GradeSystem gs_ = new GradeSystem("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput_not_exist.txt");
+		gs.readGrades("C://Users//linghao//eclipse-workspace//GradeSystem//gradeinput_not_exist.txt");
 	}
 	
 //	@Test(expected=UnsupportedEncodingException.class)
@@ -39,6 +40,7 @@ public class TestGradeSystem {
 	
 	@Test(expected=ParseException.class)
 	public void testParseLineParseException() throws ParseException {
+		@SuppressWarnings("unused")
 		String[] info = gs.parseLine("955002056 許文馨 88 92 88 98");
 	}
 	
@@ -51,6 +53,12 @@ public class TestGradeSystem {
 	@Test
 	public void testGetNumStudents() {
 		assertEquals(63, gs.getNumStudents());
+	}
+
+	@Test
+	public void testGetWeights() {
+		int[] weights = new int[]{10, 10, 10, 30, 40};
+		assertEquals(true, Arrays.equals(weights, gs.getWeights()));
 	}
 
 	@Test
